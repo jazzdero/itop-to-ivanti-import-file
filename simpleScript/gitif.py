@@ -40,23 +40,35 @@ def get_heders_relation(config_file,itop_column, ivanti_column ):
 def process_input(args):
     if (args.configfile):
         print(args.configfile)
-    if (args.file): 
-        print(args.file)
+    if (args.servicerequest): 
+        print(args.servicerequest)
+    if (args.incident):
+        print(args.incident)
+    if (args.change):
+        print(args.change)
+    if (args.output):
+        print(args.output)
+    if (args.showformat):
+        print(args.showformat)
 
 def main():
 
     parser = argparse.ArgumentParser(description="Script para transformar una exportacion de itop a una importacion de ivanti")
-    parser.add_argument("-c","--configfile", help="Archivo de configuracion",required=False)
-    parser.add_argument("-f","--file", help="archivo de itop csv",required=False)
+    parser.add_argument("-cf","--configfile", help="Archivo de configuracion .json",required=False)
+    parser.add_argument("-os","--servicerequest", help="archivo de itop para service request",required=False)
+    parser.add_argument("-i","--incident", help="archivo de itop para incident",required=False)
+    parser.add_argument("-c","--change", help="archivo de itop para change",required=False)
     parser.add_argument("-o","--output",help="salida de los archivos",required=False)
-    parser.add_argument("-sf","--showformat", help="Ruta del archivo de configuración",required=False)
+    parser.add_argument("-f","--showformat", help="formato para archivo de configuración",required=False)
 
     args = parser.parse_args()
 
     if not (
         args.configfile or 
-        args.file or 
-        args.output or 
+        args.servicerequest or
+        args.incident or
+        args.change or
+        args.output or
         args.showformat
     ):
         print("Debe proporcionar al menos un parametro")
